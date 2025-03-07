@@ -21,8 +21,10 @@ const Login = ({ setLogin }) => {
         formData.append("email", email);
         formData.append("password", password);
 
-        dispatch(login(formData));
-        setLogin(false);
+        const response = dispatch(login(formData));
+        response.then(() => {
+            setLogin(false);
+        })
     };
 
     const handleRegister = (e) => {
@@ -39,8 +41,10 @@ const Login = ({ setLogin }) => {
         formData.append("password", password);
         formData.append("dob", dob);
 
-        dispatch(register(formData));
-        setLogin(false);
+        const response = dispatch(register(formData));
+        response.then(() => {
+            setLogin(false);
+        })
     };
 
     return (

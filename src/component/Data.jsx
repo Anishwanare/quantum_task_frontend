@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { fetchUsers } from "../store/userSlice";
 
 const Data = () => {
-    const { users, isAuthenticated } = useSelector(state => state.User);
+    const { users, isAuthenticated, loading } = useSelector(state => state.User);
     const dispatch = useDispatch();
 
     useEffect(() => {
@@ -17,9 +17,18 @@ const Data = () => {
             <div className="text-center p-5 flex items-center flex-col justify-center h-96 gap-5">
                 <h2 className="sm:text-4xl font-semibold text-red-500">Login to view Data 🃏</h2>
                 <p className="text-gray-600 sm:text-xl">You need to log in to view this data.</p>
+                <img src="/login.gif" width={96} alt="" srcset="" />
             </div>
         );
     }
+    if (loading) {
+        return (
+            <div className="text-center p-5 flex items-center flex-col justify-center h-96 gap-5">
+                <h2 className="sm:text-4xl font-semibold text-red-500">Fetching data from database wait for a while.</h2>
+            </div>
+        );
+    }
+
 
     return (
         <div className="p-5 w-full md:max-w-6xl m-auto">
